@@ -2,16 +2,21 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     java
-    // TODO: If you don't want Kotlin support, remove this comment.
+    // TODO: If you don't want Kotlin support, remove the kotlin plugins and src/main/kotlin folder.
+    //       Else if you want Kotlin only, remove the src/main/java folder. You can also mix and
+    //       match (if you want to do that, you certainly know how to, it's not rocket science).
     kotlin("jvm") version "1.9.10"
+    kotlin("kapt") version "1.9.10"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("net.kyori.blossom") version "2.0.0"
+    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7" // IntelliJ + Blossom integration
     id("org.ajoberstar.grgit.service") version "5.2.0"
 }
 
 group = "org.mythicmc"
 version = "1.0.0-alpha.0${getVersionMetadata()}"
-// TODO: description = ""
+// TODO: Set the description.
+description = ""
 
 repositories {
     mavenCentral()
@@ -34,9 +39,13 @@ dependencies {
     // Needed for Spigot plugins: implementation("net.kyori:adventure-platform-bukkit:4.3.0")
     // Needed for Bungee plugins: implementation("net.kyori:adventure-platform-bungeecord:4.3.0")
 
+    // TODO: If removing Velocity, remove the `velocity` and `java-templates` folders in `src/`
     // Velocity: compileOnly("com.velocitypowered:velocity-api:3.2.0-SNAPSHOT")
-    // Velocity: annotationProcessor("com.velocitypowered:velocity-api:3.2.0-SNAPSHOT")
+    // Velocity (for Java users!): annotationProcessor("com.velocitypowered:velocity-api:3.2.0-SNAPSHOT")
+    // Velocity (for Kotlin users!): kapt("com.velocitypowered:velocity-api:3.2.0-SNAPSHOT")
+    // TODO: If removing BungeeCord, remove `bungee.yml` in `src/`
     // Bungee: compileOnly("net.md-5:bungeecord-api:1.16-R0.5-SNAPSHOT")
+    // TODO: If removing Spigot/Paper, remove `plugin.yml` in `src/`, else pick one of these:
     // Spigot: compileOnly("org.spigotmc:spigot-api:1.13.2-R0.1-SNAPSHOT")
     // Paper 1.16 and older: compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     // Paper 1.17 and newer: compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
@@ -54,6 +63,11 @@ sourceSets {
         blossom {
             resources {
                 property("version", project.version.toString())
+                property("description", project.description)
+            }
+            javaSources {
+                property("version", project.version.toString())
+                property("description", project.description)
             }
         }
     }
