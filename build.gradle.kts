@@ -75,9 +75,9 @@ sourceSets {
 
 tasks.getByName<ShadowJar>("shadowJar") {
     archiveClassifier.set("")
-    // Automatically relocate all added dependencies
-    isEnableRelocation = true
-    relocationPrefix = "org.mythicmc.templateplugin.shadow"
+    // TODO: Remove if not using Adventure or Kotlin, also, reminder to relocate bundled dependencies!
+    relocate("net.kyori", "org.mythicmc.templateplugin.shadow.net.kyori")
+    relocate("kotlin", "org.mythicmc.templateplugin.shadow.kotlin")
 }
 
 fun getVersionMetadata(): String {
