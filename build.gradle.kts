@@ -5,8 +5,8 @@ plugins {
     // TODO: If you don't want Kotlin support, remove the kotlin plugins and src/main/kotlin folder.
     //       Else if you want Kotlin only, remove the src/main/java folder. You can also mix and
     //       match (if you want to do that, you certainly know how to, it's not rocket science).
-    kotlin("jvm") version "1.9.10"
-    kotlin("kapt") version "1.9.10"
+    kotlin("jvm") version "1.9.22"
+    kotlin("kapt") version "1.9.22"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("net.kyori.blossom") version "2.0.0"
     id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7" // IntelliJ + Blossom integration
