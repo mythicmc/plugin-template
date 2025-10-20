@@ -9,8 +9,8 @@ plugins {
     kotlin("kapt") version "2.2.20"
     id("com.gradleup.shadow") version "9.2.2"
     id("net.kyori.blossom") version "2.2.0"
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.8" // IntelliJ + Blossom integration
-    id("org.ajoberstar.grgit.service") version "5.2.0"
+    id("org.jetbrains.gradle.plugin.idea-ext") version "1.3" // IntelliJ + Blossom integration
+    id("org.ajoberstar.grgit.service") version "5.3.3"
 }
 
 group = "org.mythicmc"
