@@ -54,6 +54,8 @@ dependencies {
 
 java {
     toolchain {
+        // TODO: Use Java 21+ if targeting Minecraft 1.20.5 or newer.
+        //       Gradle is obtuse when it comes to warning about these issues...
         languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
