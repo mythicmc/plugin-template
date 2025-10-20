@@ -63,11 +63,11 @@ sourceSets {
         blossom {
             resources {
                 property("version", project.version.toString())
-                property("description", project.description)
+                property("description", project.description ?: "")
             }
             javaSources {
                 property("version", project.version.toString())
-                property("description", project.description)
+                property("description", project.description ?: "")
             }
         }
     }
