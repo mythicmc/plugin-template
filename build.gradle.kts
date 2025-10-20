@@ -5,10 +5,10 @@ plugins {
     // TODO: If you don't want Kotlin support, remove the kotlin plugins and src/main/kotlin folder.
     //       Else if you want Kotlin only, remove the src/main/java folder. You can also mix and
     //       match (if you want to do that, you certainly know how to, it's not rocket science).
-    kotlin("jvm") version "2.0.10"
-    kotlin("kapt") version "2.0.10"
-    id("com.gradleup.shadow") version "8.3.0"
-    id("net.kyori.blossom") version "2.1.0"
+    kotlin("jvm") version "2.2.20"
+    kotlin("kapt") version "2.2.20"
+    id("com.gradleup.shadow") version "9.2.2"
+    id("net.kyori.blossom") version "2.2.0"
     id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.8" // IntelliJ + Blossom integration
     id("org.ajoberstar.grgit.service") version "5.2.0"
 }
@@ -84,7 +84,7 @@ tasks.getByName<ShadowJar>("shadowJar") {
 fun getVersionMetadata(): String {
     if (project.hasProperty("skipVersionMetadata")) return ""
 
-    val grgit = try { grgitService.service.orNull?.grgit } catch (e: Exception) { null }
+    val grgit = try { grgitService.service.orNull?.grgit } catch (_: Exception) { null }
     if (grgit != null) {
         val head = grgit.head() ?: return "+unknown" // No head, fresh git repo
         var id = head.abbreviatedId
