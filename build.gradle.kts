@@ -77,7 +77,6 @@ sourceSets {
 
 tasks.getByName<ShadowJar>("shadowJar") {
     minimize()
-    archiveClassifier.set("")
     // TODO: Remove if not using Adventure or Kotlin, also, reminder to relocate bundled dependencies!
     relocate("net.kyori", "org.mythicmc.templateplugin.shadow.net.kyori")
     relocate("kotlin", "org.mythicmc.templateplugin.shadow.kotlin")
